@@ -14,22 +14,15 @@ module.exports = {
     entry: path.resolve(__dirname, 'src', 'index.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        clean: true,
         filename: '[name].[contenthash].js',
+        publicPath: '',
+        clean: true,
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html')
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-        }),
-    ],
     module: {
         rules: [
             {
                 test: /\.html$/i,
-                loader: 'html-loader'
+                loader: 'html-loader',
             },
             {
                 test: /\.(c|sa|sc)ss$/i,
@@ -37,8 +30,18 @@ module.exports = {
                     devmode ? "style-loader" : MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader",
+                    "postcss-loader"
                 ],
             },
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'index.html'),
+            title: 'Custom template',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+        }),
+    ],
 }
