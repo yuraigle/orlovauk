@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>Hello Webpack</title>
 </head>
 <body>
-    <header>
-        <%= require('html-loader!./partials/header.html').default %>
-    </header>
+    <include src="./partials/header.html"/>
     <main>
         <img src="./img/pic1_s.webp" alt="Анастасия за работой" />
     </main>
+    <include src="./partials/footer.html"/>
 </body>
 </html>
