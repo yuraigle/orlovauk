@@ -50,9 +50,22 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|webp)$/i,
+        include: [
+          path.resolve(__dirname, 'src', 'img')
+        ],
         type: "asset/resource",
         generator: {
           filename: "img/[contenthash][ext]",
+        },
+      },
+      {
+        test: /.*$/i,
+        include: [
+          path.resolve(__dirname, 'src', 'files')
+        ],
+        type: "asset/resource",
+        generator: {
+          filename: "[name][ext]",
         },
       },
     ],
@@ -74,7 +87,7 @@ function processNestedHtml(content, loaderContext, resourcePath = "") {
       ? path.dirname(loaderContext.resourcePath)
       : path.dirname(resourcePath);
   const INCLUDE_PATTERN =
-    /\<include src=\"(\.\/)?(.+)\"\/?\>(?:\<\/include\>)?/gi;
+    /\<include src=\"(\.\/)?(.+)\"\s?\/?\>(?:\<\/include\>)?/gi;
 
   function replaceHtml(match, pathRule, src) {
     if (pathRule === "./") {
