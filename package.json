@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve",
     "build-dev": "webpack --node-env=development",
-    "build": "webpack --node-env=production"
+    "build": "webpack --node-env=production",
+    "deploy": "webpack --node-env=production && winscp.com /script=./deploy-winscp.txt"
   },
   "keywords": [],
   "author": "orlov",

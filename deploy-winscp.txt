@@ -1,0 +1,6 @@
+open orlov@orlova.uk
+cd /var/www/orlova/public
+rm ./*
+put .\dist\* ./
+close
+exit
