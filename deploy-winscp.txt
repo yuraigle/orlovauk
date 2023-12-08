@@ -1,6 +1,32 @@
 open orlov@orlova.uk
 cd /var/www/orlova/public
-rm ./*
-put .\dist\* ./
+
+rm ./*.css
+put .\dist\*.css ./
+
+rm ./*.js
+put .\dist\*.js ./
+
+rm ./*.html
+put .\dist\*.html ./
+
+rm ./*.txt
+put .\dist\*.txt ./
+
+rm ./*.xml
+put .\dist\*.xml ./
+
+rm ./img/*.webp
+put .\dist\img\*.webp ./img/
+
+rm ./*.png
+put .\dist\*.png ./
+
+rm ./*.ico
+put .\dist\*.ico ./
+
+rm ./*.php
+put .\dist\*.php ./
+
 close
 exit
