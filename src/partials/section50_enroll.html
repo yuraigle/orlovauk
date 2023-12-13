@@ -12,28 +12,31 @@
         <div class="mt-12" id="root1">
             <form v-on:submit="onSubmit" v-if="!result">
                 <div class="grid gap-4 lg:gap-6">
-                    <div class="relative">
-                        <label for="name" class="sr-only">Имя</label>
-                        <input type="text" name="name" id="name" autocomplete="name" placeholder="Имя"
-                            class="input-field ps-11"
-                            :value="name" @input="onInputName"
-                        >
-                        <div
-                            class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
-                            <svg class="flex-shrink-0 w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
+                    <div>
+                        <div class="relative">
+                            <label for="name" class="sr-only">Имя</label>
+                            <input type="text" name="name" id="name" autocomplete="name" placeholder="Имя"
+                                class="input-field ps-11" :class="{error: errors.name}"
+                                :value="name" @input="onInputName"
+                            >
+                            <div
+                                class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                <svg class="flex-shrink-0 w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </div>
                         </div>
+                        <p class="text-sm text-red-600 mt-1" v-if="errors.name">{{ errors.name }}</p>
                     </div>
 
                     <div>
                         <div class="relative">
                             <label for="phone" class="sr-only">Телефон</label>
                             <input type="tel" name="phone" id="phone" autocomplete="phone" placeholder="Телефон"
-                                class="input-field error ps-11"
+                                class="input-field ps-11" :class="{error: errors.phone}"
                                 :value="phone" @input="onInputPhone"
                             >
                             <div
@@ -47,7 +50,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="text-sm text-red-600 mt-1">Неправильный формат мобильного телефона.</p>
+                        <p class="text-sm text-red-600 mt-1" v-if="errors.phone">{{ errors.phone }}</p>
                     </div>
 
                     <div>

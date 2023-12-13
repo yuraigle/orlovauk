@@ -37,17 +37,22 @@ if ($_POST['name'] && $_POST['phone']) {
 
     $ip = $_SERVER['REMOTE_ADDR'];
 
-    $text = "На сайт поступила заявка.\nТелефон: $phone\nИмя: $name\nIP: $ip";
-    if ($details) {
-        $text .= "\n\n" . $details;
-    }
+    $tpl = <<<'HERE1'
+    На сайт поступила заявка.
+    Телефон: %s
+    Имя: %s
+    IP: %s
+
+    %s
+    HERE1;
+
+    $text = sprintf($tpl, $phone, $name, $ip, $details);
 
     $env = readEnv();
-    // $result = tgSendMessage($env['CHAT_ID'], $env['BOT_TOKEN'], $text);
-    // $json = json_decode($result, true);
+    $result = tgSendMessage($env['CHAT_ID'], $env['BOT_TOKEN'], $text);
+    $json = json_decode($result, true);
     header("Content-Type: application/json");
-    // echo json_encode(["status" => $json && $json ['ok'] ? "OK" : "FAIL"]);
-    echo json_encode($text);
+    echo json_encode(["status" => $json && $json ['ok'] ? "OK" : "FAIL"]);
     exit();
 }
 
