@@ -30,7 +30,7 @@ if ($_POST['name'] && $_POST['phone']) {
     $phone = preg_replace('|^[78]|', '+7', $phone);
 
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-    $name = substr($name, 0, 60);
+    $name = substr($name, 0, 40);
 
     $details = filter_input(INPUT_POST, 'details', FILTER_SANITIZE_STRING);
     $details = substr($details, 0, 200);
@@ -43,10 +43,11 @@ if ($_POST['name'] && $_POST['phone']) {
     }
 
     $env = readEnv();
-    $result = tgSendMessage($env['CHAT_ID'], $env['BOT_TOKEN'], $text);
-    $json = json_decode($result, true);
+    // $result = tgSendMessage($env['CHAT_ID'], $env['BOT_TOKEN'], $text);
+    // $json = json_decode($result, true);
     header("Content-Type: application/json");
-    echo json_encode(["status" => $json && $json ['ok'] ? "OK" : "FAIL"]);
+    // echo json_encode(["status" => $json && $json ['ok'] ? "OK" : "FAIL"]);
+    echo json_encode($text);
     exit();
 }
 

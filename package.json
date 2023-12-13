@@ -32,6 +32,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "petite-vue-pro": "^0.4.6",
     "photoswipe": "^5.4.3",
     "photoswipe-dynamic-caption-plugin": "^1.2.7"
   }
