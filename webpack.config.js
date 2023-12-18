@@ -26,7 +26,7 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
         options: {
-          esModule: false,
+          esModule: true,
           preprocessor: processHtmlLoader,
           sources: {
             list: [
